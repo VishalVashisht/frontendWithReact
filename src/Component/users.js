@@ -1,93 +1,41 @@
 import React from 'react'
-import axios from 'axios';
 
 export default class Users extends React.Component {
-    constructor(props) {
-    super(props);
-  
-    // Initializing the state 
-    this.state = {
-        renderType:'users',
-        items: [],
-        revData: false
-      };
+
+  changeState=()=>{
+  var users=this.props.items;
+  // users=users.reverse();
+  console.log('reverse',users)
+  this.render();
   }
 
-  componentDidMount() {
-    console.log("componentDidMountCalled",this.state.renderType);
-    
-    axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
-      .then(res => this.setState({
-        items:res.data
-      }));
-  }
 
-//   componentDidUpdate(prevProps,prevState){
-//     console.log('componentdidUpdate',this.state.renderType)
-//     console.log(this.state.items);
-//     if(prevState.renderType!==this.state.renderType){
-//     axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
-//     .then(res => this.setState({
-//       items:res.data.reverse()
-//     }));
-// }
-//   }
-
-
-changeState = ()=>{
-    axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
-    .then(res => this.setState({
-      items:res.data.reverse()
-    }));
-}
-  
   render() {
+    const users= this.props.items;
+    console.log(users,"hii users")
     return (
       <div> 
         <center>
         <button onClick={()=>this.changeState()}>Reverse</button>
-        <h1> {this.state.renderType} </h1>
         </center>
-
-
-        <table border={2} >
+        <br />
+        <table border={2}>
+        <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Username</th>
+                <th>Phone</th>
+                <th>Delete</th>
             </tr>
-
-        <tr>
-            <td>
-            {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item.id)}</pre>
-        })} 
-            </td>
-            <td>
-            {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item.name)}</pre>
-        })} 
-            </td>
-            <td>
-            {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item.email)}</pre>
-        })} 
-            </td>
-            <td>
-            {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item.username)}</pre>
-        })} 
-            </td>
-        </tr>
+            </thead>
+            <tbody>
+              {users && users.map(user =><tr key={user.id}><td>{user.id}</td>
+                <td>{user.name}</td><td>{user.email}</td> <td>{user.username}</td> <td>{user.phone}</td> <td><button>Delete</button></td></tr>)}
+            </tbody>
         </table>
-
-        {/* <div>
-        <h1> {this.state.renderType} </h1>
-        {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item)}</pre>
-        })}
-        </div> */}
+        <br />
       </div>
     )
   }

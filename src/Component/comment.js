@@ -13,34 +13,9 @@ export default class Comments extends React.Component {
       };
   }
 
-  componentDidMount() {
-    console.log("componentDidMountCalled",this.state.renderType);
-    
-    axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
-      .then(res => this.setState({
-        items:res.data
-      }));
-  }
-
-//   componentDidUpdate(prevProps,prevState){
-//     console.log('componentdidUpdate',this.state.renderType)
-//     console.log(this.state.items);
-//     if(prevState.renderType!==this.state.renderType){
-//         axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
-//         .then(res => this.setState({
-//             items:res.data.reverse()
-//         }));
-//     }
-//   }
-
-  changeState = ()=>{
-    axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
-        .then(res => this.setState({
-            items:res.data.reverse()
-        }));
-  }
   
   render() {
+    const Comments = this.props.items;
     return (
       <div> 
         <center>
@@ -50,35 +25,22 @@ export default class Comments extends React.Component {
 
 
         <table border={2} >
+          <thead>
             <tr>
                 <th>PostId</th>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Delete</th>
             </tr>
+          </thead>
 
-        <tr>
-            <td>
-            {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item.postId)}</pre>
-        })} 
-            </td>
-            <td>
-            {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item.id)}</pre>
-        })} 
-            </td>
-            <td>
-            {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item.name)}</pre>
-        })} 
-            </td>
-            <td>
-            {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item.email)}</pre>
-        })} 
-            </td>
-        </tr>
+        <tbody>
+
+        {Comments && Comments.map((item)=>{
+          return (<tr><td>{item.postId}</td><td>{item.id}</td><td>{item.name}</td><td>{item.email}</td>  <td> <button>Delete</button> </td></tr>)
+         })}
+        </tbody>
         </table>
 
         {/* <div>

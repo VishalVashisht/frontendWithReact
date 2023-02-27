@@ -12,26 +12,6 @@ export default class Posts extends React.Component {
         // revData:false
       };
   }
-
-  componentDidMount() {
-    console.log("componentDidMountCalled",this.state.renderType);
-    
-    axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
-      .then(res => this.setState({
-        items:res.data
-      }));
-  }
-
-//   componentDidUpdate(prevProps,prevState){
-//     console.log('componentdidUpdate',this.state.renderType)
-//     console.log(this.state.items);
-//     if(prevState.renderType!==this.state.renderType){
-//     axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
-//     .then(res => this.setState({
-//       items:res.data.reverse()
-//     }));
-// }
-//   }
   
   changeState = ()=>{
     axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
@@ -42,6 +22,7 @@ export default class Posts extends React.Component {
 
 
   render() {
+    const Posts = this.props.items;
     return (
       <div> 
         <center>
@@ -51,63 +32,25 @@ export default class Posts extends React.Component {
 
 
         <table border={2}>
+          <tbody>
             <tr>
                 <th>UserId</th>
                 <th>Id</th>
                 <th>Title</th>
                 <th>Body</th>
+                <th>Delete</th>
             </tr>
+          </tbody>
 
-        <tr>
-            <td>
-            {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item.userId)}</pre>
-        })} 
-            </td>
-            <td>
-            {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item.id)}</pre>
-        })} 
-            </td>
-            <td>
-            {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item.title)}</pre>
-        })} 
-            </td>
-            <td>
-            {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item.body)}</pre>
-        })} 
-            </td>
-        </tr>
-        </table>
+        <tbody>
 
-        {/* <div>
-        <h1> {this.state.renderType} </h1>
-        {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item)}</pre>
+          
+        {Posts && Posts.map((item)=>{
+          return (<tr><td>{item.userId}</td><td>{item.id}</td><td>{item.title}</td> <td>{item.body}</td>  <td> <button>Delete</button> </td></tr>)
         })}
-        </div> */}
+        </tbody>
+        </table>
       </div>
     )
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
