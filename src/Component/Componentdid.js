@@ -18,7 +18,6 @@ export default class ComponentClass extends React.Component {
 
   componentDidMount() {
     console.log("componentDidMountCalled",this.state.renderType);
-    
     axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
       .then(res => this.setState({
         items:res.data
@@ -34,6 +33,13 @@ export default class ComponentClass extends React.Component {
         }));
     }
   }
+
+  changeState = ()=>{
+    axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
+        .then(res => this.setState({
+        items:res.data.reverse()
+        }));
+  }
   
   render() {
     return (
@@ -43,6 +49,7 @@ export default class ComponentClass extends React.Component {
             <button onClick={()=>this.setState({renderType:"posts"})}>Posts</button>
             <button onClick={()=>this.setState({renderType:"comments"})}>Comments</button>
             <button onClick={()=>this.setState({renderType:"users"})}>Users</button>
+            <button onClick={()=>this.changeState()}>Reverse</button>
             <hr color='black'/>
 
             {this.state.renderType=== "posts" && <Posts items = {this.state.items}/> }

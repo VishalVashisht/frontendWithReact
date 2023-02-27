@@ -16,7 +16,7 @@ export default class Users extends React.Component {
     return (
       <div> 
         <center>
-        <button onClick={()=>this.changeState()}>Reverse</button>
+        {/* <button onClick={()=>this.changeState()}>Reverse</button> */}
         </center>
         <br />
         <table border={2}>

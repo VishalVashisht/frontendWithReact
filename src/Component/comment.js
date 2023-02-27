@@ -19,7 +19,7 @@ export default class Comments extends React.Component {
     return (
       <div> 
         <center>
-        <button onClick={()=>this.changeState()}>Reverse</button>
+        {/* <button onClick={()=>this.changeState()}>Reverse</button> */}
         <h1> {this.state.renderType} </h1>
         </center>
 
