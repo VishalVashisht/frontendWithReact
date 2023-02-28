@@ -3,6 +3,7 @@ import axios from 'axios';
 import Posts from './post';
 import Comments from './comment';
 import Users from './users';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 
 
@@ -72,9 +73,15 @@ export default class ComponentClass extends React.Component {
         <div>
           <center>
             <br />
-            <button onClick={()=>this.changeState('posts')}>Posts</button>
+            {/* <button onClick={()=>this.changeState('posts')}>Posts</button>
             <button onClick={()=>this.changeState('comments')}>Comments</button>
-            <button onClick={()=>this.changeState('users')}>Users</button>
+            <button onClick={()=>this.changeState('users')}>Users</button> */}
+
+            <BrowserRouter>
+              <Link to="/posts"><button onClick={()=>this.handleUpdate("posts")}>Posts</button></Link>
+              <Link to="/comments"><button onClick={()=>this.handleUpdate("comments")}>Comments</button></Link>
+              <Link to="/users"><button onClick={()=>this.handleUpdate("users")}>Users</button></Link>
+            </BrowserRouter>
 
             <hr color='black'/>
             <h1> {this.state.renderType} </h1>
