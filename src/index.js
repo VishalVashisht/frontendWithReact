@@ -5,12 +5,16 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 // import Axios from './Component/Axios'
 import ComponentClass from './Component/Componentdid';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <App /> */}
     {/* <Axios/> */}
+    {/* <BrowserRoute>
+    <ComponentClass/>
+    </BrowserRoute> */}
     <ComponentClass/>
   </React.StrictMode>
 );

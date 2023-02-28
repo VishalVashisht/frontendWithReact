@@ -9,7 +9,7 @@ body {
 }
 
 table{
-  width: 75%;
+  width: 80%;
   margin: auto;
   border-collapse: collapse;
   border-color: #4caf50;
@@ -23,6 +23,9 @@ pre{
 
 pre{
   text-align: center;
+}
+th{
+  width: 1px;
 }
 
 button{

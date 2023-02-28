@@ -1,5 +1,6 @@
-import React from 'react'
-import axios from 'axios';
+import React from 'react';
+import DeleteIcon from "@mui/icons-material/Delete";
+import ImportExportIcon from '@mui/icons-material/ImportExport';
 
 export default class Posts extends React.Component {
     constructor(props) {
@@ -9,16 +10,15 @@ export default class Posts extends React.Component {
     this.state = {
         renderType:'posts',
         items: [],
-        // revData:false
       };
   }
   
-  changeState = ()=>{
-    axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
-    .then(res => this.setState({
-      items:res.data.reverse()
-    }));
-  }
+  // changeState = ()=>{
+  //   axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
+  //   .then(res => this.setState({
+  //     items:res.data.reverse()
+  //   }));
+  // }
 
 
   render() {
@@ -26,7 +26,6 @@ export default class Posts extends React.Component {
     return (
       <div> 
         <center>
-        {/* <button onClick={()=>this.changeState()}>Reverse</button> */}
         <h1> {this.state.renderType} </h1>
         </center>
 
@@ -34,10 +33,10 @@ export default class Posts extends React.Component {
         <table border={2}>
           <tbody>
             <tr>
-                <th>UserId</th>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Body</th>
+                <th>UserId <ImportExportIcon  onClick={()=>{this.props.sortBy('userId')}}/></th>
+                <th>Id <ImportExportIcon onClick={()=>{this.props.sortBy('id')}} /> </th>
+                <th>Title <ImportExportIcon onClick={()=>{this.props.sortBy('title')}}/> </th>
+                <th>Body <ImportExportIcon  onClick={()=>{this.props.sortBy('body')}}/> </th>
                 <th>Delete</th>
             </tr>
           </tbody>
@@ -52,7 +51,7 @@ export default class Posts extends React.Component {
             <td>{item.id}</td> 
             <td>{item.title}</td>
             <td>{item.body}</td>
-            <td><button onClick={()=>this.props.del(item.id)}>Delete</button></td>
+            <td> <DeleteIcon onClick={()=>{this.props.del(item.id)}}/> </td>
           </tr>)
         })}
         </tbody>

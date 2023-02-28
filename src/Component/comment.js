@@ -1,15 +1,15 @@
 import React from 'react'
-import axios from 'axios';
+import DeleteIcon from "@mui/icons-material/Delete";
+import ImportExportIcon from '@mui/icons-material/ImportExport';
 
 export default class Comments extends React.Component {
     constructor(props) {
     super(props);
   
-    // Initializing the state 
     this.state = {
         renderType:'comments',
         items: [],
-        revData : false
+        // revData : false
       };
   }
 
@@ -19,7 +19,6 @@ export default class Comments extends React.Component {
     return (
       <div> 
         <center>
-        {/* <button onClick={()=>this.changeState()}>Reverse</button> */}
         <h1> {this.state.renderType} </h1>
         </center>
 
@@ -27,10 +26,10 @@ export default class Comments extends React.Component {
         <table border={2} >
           <thead>
             <tr>
-                <th>PostId</th>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
+                <th>PostId <ImportExportIcon  onClick={()=>{this.props.sortBy('postId')}} /> </th>
+                <th>Id <ImportExportIcon  onClick={()=>{this.props.sortBy('id')}} /> </th>
+                <th>Name <ImportExportIcon  onClick={()=>{this.props.sortBy('name')}} /> </th>
+                <th >Email <ImportExportIcon  onClick={()=>{this.props.sortBy('email')}} /> </th>
                 <th>Delete</th>
             </tr>
           </thead>
@@ -44,18 +43,11 @@ export default class Comments extends React.Component {
             <td>{item.id}</td>
             <td>{item.name}</td>
             <td>{item.email}</td>
-            <td><button onClick={()=>{this.props.del(item.id)}}>Delete</button></td>
+            <td> <DeleteIcon onClick={()=>{this.props.del(item.id)}}/> </td>
             </tr>)
          })}
         </tbody>
         </table>
-
-        {/* <div>
-        <h1> {this.state.renderType} </h1>
-        {this.state.items.map((item)=>{
-            return <pre key={item.id}>{JSON.stringify(item)}</pre>
-        })}
-        </div> */}
       </div>
     )
   }
