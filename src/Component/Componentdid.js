@@ -77,6 +77,7 @@ export default class ComponentClass extends React.Component {
             <button onClick={()=>this.changeState('users')}>Users</button>
 
             <hr color='black'/>
+            <h1> {this.state.renderType} </h1>
 
             {this.state.renderType=== "posts" && <Posts items = {this.state.items} del={this.del} sortBy = {this.sortBy} /> }
             {this.state.renderType === "comments" && <Comments items = {this.state.items} del={this.del} sortBy = {this.sortBy} /> }

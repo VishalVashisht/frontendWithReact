@@ -9,7 +9,7 @@ export default class Comments extends React.Component {
     this.state = {
         renderType:'comments',
         items: [],
-        // revData : false
+
       };
   }
 
@@ -18,9 +18,9 @@ export default class Comments extends React.Component {
     const Comments = this.props.items;
     return (
       <div> 
-        <center>
+        {/* <center>
         <h1> {this.state.renderType} </h1>
-        </center>
+        </center> */}
 
 
         <table border={2} >

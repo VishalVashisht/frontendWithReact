@@ -11,14 +11,24 @@ export default class Users extends React.Component {
   // this.render();
   // }
 
+  // constructor(props) {
+  //   super(props);
+  
+  //   this.state = {
+  //       renderType:'users',
+  //       items: [],
+
+  //     };
+  // }
+
 
   render() {
     const users= this.props.items;
-    console.log(users,"hii users")
     return (
       <div> 
-        <center>
-        </center>
+        {/* <center>
+          <h1> {this.state.renderType} </h1>
+        </center> */}
         <br />
         <table border={2}>
         <thead>

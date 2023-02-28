@@ -25,9 +25,9 @@ export default class Posts extends React.Component {
     const Posts = this.props.items;
     return (
       <div> 
-        <center>
+        {/* <center>
         <h1> {this.state.renderType} </h1>
-        </center>
+        </center> */}
 
 
         <table border={2}>
