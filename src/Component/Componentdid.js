@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, Component} from 'react'
 import axios from 'axios';
 import Posts from './post';
 import Comments from './comment';
@@ -6,16 +6,14 @@ import Users from './users';
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
 
-
-export default class ComponentClass extends React.Component {
+let renderType=''
+export default class ComponentClass extends Component {
     constructor(props) {
     super(props);
   
     // Initializing the state 
     this.state = {
-        hello:true,
-        renderType:'',
-        items: [],
+        items: []
       };
   }
 
@@ -37,15 +35,16 @@ export default class ComponentClass extends React.Component {
   //   }
   // }
 
-  changeState = (renderType)=>{
+  changeState = (renderVal)=>{
     console.log(this.state.items);
-    // if(prevState.renderType!==this.state.renderType)
+    if(renderType!==renderVal)
     {
-    axios.get(`https://jsonplaceholder.typicode.com/${renderType}`)
+    axios.get(`https://jsonplaceholder.typicode.com/${renderVal}`)
         .then(res => this.setState({
         items:res.data,
-        renderType: renderType
+        // renderType: renderVal
         }));
+        renderType = renderVal;
     }
   }
 
@@ -97,9 +96,9 @@ export default class ComponentClass extends React.Component {
             </Routes> */}
             
 
-            {this.state.renderType=== "posts" && <Posts items = {this.state.items} del={this.del} sortBy = {this.sortBy} /> }
-            {this.state.renderType === "comments" && <Comments items = {this.state.items} del={this.del} sortBy = {this.sortBy} /> }
-            { this.state.renderType==="users" && <Users items = {this.state.items} del={this.del} sortBy = {this.sortBy} />} 
+            {renderType=== "posts" && <Posts items = {this.state.items} del={this.del} sortBy = {this.sortBy} /> }
+            {renderType === "comments" && <Comments items = {this.state.items} del={this.del} sortBy = {this.sortBy} /> }
+            {renderType==="users" && <Users items = {this.state.items} del={this.del} sortBy = {this.sortBy} />} 
 
             </center>
             

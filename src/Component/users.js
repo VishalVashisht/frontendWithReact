@@ -11,15 +11,6 @@ export default class Users extends Component {
   // this.render();
   // }
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //       renderType:'users',
-  //       items: [],
-  //     };
-  // }
-
-
   render() {
     return (
       <> 
