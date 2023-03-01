@@ -1,8 +1,8 @@
-import React from 'react'
+import {React, Component} from 'react'
 import DeleteIcon from "@mui/icons-material/Delete";
 import ImportExportIcon from '@mui/icons-material/ImportExport';
 
-export default class Users extends React.Component {
+export default class Users extends Component {
 
   // changeState=()=>{
   // var users=this.props.items;
@@ -13,22 +13,16 @@ export default class Users extends React.Component {
 
   // constructor(props) {
   //   super(props);
-  
   //   this.state = {
   //       renderType:'users',
   //       items: [],
-
   //     };
   // }
 
 
   render() {
-    const users= this.props.items;
     return (
-      <div> 
-        {/* <center>
-          <h1> {this.state.renderType} </h1>
-        </center> */}
+      <> 
         <br />
         <table border={2}>
         <thead>
@@ -42,7 +36,7 @@ export default class Users extends React.Component {
             </tr>
             </thead>
             <tbody>
-              {users && users.map(user =>
+              {this.props.items && this.props.items.map(user =>
               <tr key={user.id}>
                 <td>{user.id}</td>
                 <td>{user.name}</td>
@@ -54,7 +48,7 @@ export default class Users extends React.Component {
             </tbody>
         </table>
         <br />
-      </div>
+      </>
     )
   }
 }

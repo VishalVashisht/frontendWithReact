@@ -1,17 +1,17 @@
-import React from 'react';
+import {React, Component} from 'react';
 import DeleteIcon from "@mui/icons-material/Delete";
 import ImportExportIcon from '@mui/icons-material/ImportExport';
 
-export default class Posts extends React.Component {
-    constructor(props) {
-    super(props);
+export default class Posts extends Component {
+  //   constructor(props) {
+  //   super(props);
   
-    // Initializing the state 
-    this.state = {
-        renderType:'posts',
-        items: [],
-      };
-  }
+  //   // Initializing the state 
+  //   this.state = {
+  //       renderType:'posts',
+  //       items: [],
+  //     };
+  // }
   
   // changeState = ()=>{
   //   axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
@@ -22,14 +22,8 @@ export default class Posts extends React.Component {
 
 
   render() {
-    const Posts = this.props.items;
     return (
-      <div> 
-        {/* <center>
-        <h1> {this.state.renderType} </h1>
-        </center> */}
-
-
+      <> 
         <table border={2}>
           <tbody>
             <tr>
@@ -40,11 +34,10 @@ export default class Posts extends React.Component {
                 <th>Delete</th>
             </tr>
           </tbody>
-
         <tbody>
 
           
-        {Posts && Posts.map((item)=>{
+        {this.props.items && this.props.items.map((item)=>{
           return (
           <tr>
             <td>{item.userId}</td> 
@@ -56,7 +49,7 @@ export default class Posts extends React.Component {
         })}
         </tbody>
         </table>
-      </div>
+      </>
     )
   }
 }

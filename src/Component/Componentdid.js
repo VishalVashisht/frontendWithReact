@@ -70,7 +70,7 @@ export default class ComponentClass extends React.Component {
   
   render() {
     return (
-        <div>
+        <>
           <center>
             <br />
 
@@ -103,7 +103,7 @@ export default class ComponentClass extends React.Component {
 
             </center>
             
-        </div>
+        </>
     )
   }
 }

@@ -1,28 +1,11 @@
-import React from 'react'
+import {React,Component} from 'react'
 import DeleteIcon from "@mui/icons-material/Delete";
 import ImportExportIcon from '@mui/icons-material/ImportExport';
 
-export default class Comments extends React.Component {
-    constructor(props) {
-    super(props);
-  
-    this.state = {
-        renderType:'comments',
-        items: [],
-
-      };
-  }
-
-  
+export default class Comments extends Component {
   render() {
-    const Comments = this.props.items;
     return (
-      <div> 
-        {/* <center>
-        <h1> {this.state.renderType} </h1>
-        </center> */}
-
-
+      <> 
         <table border={2} >
           <thead>
             <tr>
@@ -36,7 +19,7 @@ export default class Comments extends React.Component {
 
         <tbody>
 
-        {Comments && Comments.map((item)=>{
+        {this.props.items && this.props.items.map((item)=>{
           return (
           <tr>
             <td>{item.postId}</td>
@@ -48,7 +31,7 @@ export default class Comments extends React.Component {
          })}
         </tbody>
         </table>
-      </div>
+      </>
     )
   }
 }
