@@ -78,9 +78,9 @@ export default class ComponentClass extends React.Component {
             <button onClick={()=>this.changeState('users')}>Users</button> */}
 
             <BrowserRouter>
-              <Link to="/posts"><button onClick={()=>this.handleUpdate("posts")}>Posts</button></Link>
-              <Link to="/comments"><button onClick={()=>this.handleUpdate("comments")}>Comments</button></Link>
-              <Link to="/users"><button onClick={()=>this.handleUpdate("users")}>Users</button></Link>
+              <Link to="/posts"><button onClick={()=>this.changeState("posts")}>Posts</button></Link>
+              <Link to="/comments"><button onClick={()=>this.changeState("comments")}>Comments</button></Link>
+              <Link to="/users"><button onClick={()=>this.changeState("users")}>Users</button></Link>
             </BrowserRouter>
 
             <hr color='black'/>
