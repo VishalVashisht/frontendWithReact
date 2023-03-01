@@ -3,7 +3,7 @@ import axios from 'axios';
 import Posts from './post';
 import Comments from './comment';
 import Users from './users';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
 
 
@@ -14,18 +14,18 @@ export default class ComponentClass extends React.Component {
     // Initializing the state 
     this.state = {
         hello:true,
-        renderType:'posts',
+        renderType:'',
         items: [],
       };
   }
 
-  componentDidMount() {
-    console.log("componentDidMountCalled",this.state.renderType);
-    axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
-      .then(res => this.setState({
-        items:res.data
-      }));
-  }
+  // componentDidMount() {
+  //   console.log("componentDidMountCalled",this.state.renderType);
+  //   axios.get(`https://jsonplaceholder.typicode.com/${this.state.renderType}`)
+  //     .then(res => this.setState({
+  //       items:res.data
+  //     }));
+  // }
 
   // componentDidUpdate(prevProps,prevState){
   //   console.log(this.state.items);
@@ -73,22 +73,34 @@ export default class ComponentClass extends React.Component {
         <div>
           <center>
             <br />
-            {/* <button onClick={()=>this.changeState('posts')}>Posts</button>
-            <button onClick={()=>this.changeState('comments')}>Comments</button>
-            <button onClick={()=>this.changeState('users')}>Users</button> */}
 
             <BrowserRouter>
               <Link to="/posts"><button onClick={()=>this.changeState("posts")}>Posts</button></Link>
               <Link to="/comments"><button onClick={()=>this.changeState("comments")}>Comments</button></Link>
               <Link to="/users"><button onClick={()=>this.changeState("users")}>Users</button></Link>
-            </BrowserRouter>
+              </BrowserRouter>
 
             <hr color='black'/>
             <h1> {this.state.renderType} </h1>
 
+            {/* <Routes>
+              <Route 
+                path="posts" 
+                element={<Posts items = {this.state.items} del={this.del} sortBy = {this.sortBy}></Posts>} />
+              <Route 
+                path="comments" 
+                element={<Comments items = {this.state.items} del={this.del} sortBy = {this.sortBy}></Comments>} 
+                onEnter={() => {this.changeState('comments')}}/>
+              <Route 
+                path="users" 
+                element={<Users items = {this.state.items} del={this.del} sortBy = {this.sortBy}></Users>} />
+            </Routes> */}
+            
+
             {this.state.renderType=== "posts" && <Posts items = {this.state.items} del={this.del} sortBy = {this.sortBy} /> }
             {this.state.renderType === "comments" && <Comments items = {this.state.items} del={this.del} sortBy = {this.sortBy} /> }
             { this.state.renderType==="users" && <Users items = {this.state.items} del={this.del} sortBy = {this.sortBy} />} 
+
             </center>
             
         </div>
