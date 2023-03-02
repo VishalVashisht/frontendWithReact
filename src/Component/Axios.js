@@ -10,7 +10,6 @@ function Axioss(){
         });
     },[]);
 
-    console.log(myData);
     return(
         <>
         <h1>Axios</h1>

@@ -16,7 +16,7 @@ export default class User extends React.Component{
     
     single(value){
         this.setState({
-            count: value===1 ? this.state.count+1 : (this.state.count === 0 ? 0:this.state.count-1)
+            count: value==1 ? this.state.count+1 : (this.state.count==0 ? 0:this.state.count-1)
         })
 
     }
@@ -28,7 +28,7 @@ export default class User extends React.Component{
     }
     
     reset(){
-        this.setState({count: this.state.count=val})
+        this.setState({count:val})
     }
 
     render(){
